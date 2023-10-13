@@ -15,7 +15,7 @@ class EmbeddingService:
             bson_data = response.content
             self.config = bson.loads(bson_data)
         else:
-            raise Exception("Failed to fetch config object from microservice.")
+            raise Exception(f"Failed to fetch config object from microservice: {response.status_code}/{response.reason}")
          
         self.MODEL = SentenceTransformer(self.config['models']['embedding_model'])
 
